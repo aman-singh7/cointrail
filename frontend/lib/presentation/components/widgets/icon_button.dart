@@ -8,17 +8,19 @@ class AppIconButton extends StatelessWidget {
     required this.label,
     this.icon = '',
     this.horizontalPadding = 100,
+    this.onPressed,
     super.key,
   });
 
   final String label;
   final String icon;
   final double horizontalPadding;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return TextButton.icon(
-      onPressed: () {},
+      onPressed: onPressed,
       style: TextButton.styleFrom(
         minimumSize: const Size.fromHeight(60),
         shape: RoundedRectangleBorder(

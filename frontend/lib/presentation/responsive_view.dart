@@ -24,10 +24,9 @@ class ResponsiveView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    if (size.width > 992) {
+    if (isDesktop(context)) {
       return desktop;
-    } else if (size.width >= 576 && tablet != null) {
+    } else if (isTablet(context) && tablet != null) {
       return tablet!;
     } else {
       return mobile;

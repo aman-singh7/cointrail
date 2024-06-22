@@ -5,21 +5,28 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        Text(
+        const Text(
           'Log in or sign up',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
           ),
         ),
-        SizedBox(height: 15),
-        TextInput(hint: 'Email'),
-        SizedBox(height: 20),
-        GradientButton(label: 'Continue'),
-        SizedBox(height: 8),
-        Row(
+        const SizedBox(height: 15),
+        const TextInput(hint: 'Email'),
+        const SizedBox(height: 20),
+        PrimaryButton(
+          label: 'Continue',
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ));
+          },
+        ),
+        const SizedBox(height: 8),
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Prefer phone number?'),
@@ -29,27 +36,22 @@ class LoginForm extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 20),
-        ORWidget(),
-        SizedBox(height: 15),
-        AppIconButton(
+        const SizedBox(height: 20),
+        _buildORSection(),
+        const SizedBox(height: 15),
+        const AppIconButton(
           label: 'Continue with Google',
           icon: 'assets/icons/google.svg',
         ),
-        SizedBox(height: 20),
-        AppIconButton(
+        const SizedBox(height: 20),
+        const AppIconButton(
           label: 'Read Only',
         ),
       ],
     );
   }
-}
 
-class ORWidget extends StatelessWidget {
-  const ORWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildORSection() {
     return const Row(
       children: [
         Expanded(
